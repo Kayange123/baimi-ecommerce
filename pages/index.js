@@ -1,7 +1,34 @@
 import React from "react";
+import { client, urlFor } from "@/libs/sanityClient";
+import { Product, FooterBanner, HeroBanner } from "../components/index";
 
-const index = () => {
-  return <div>index</div>;
+const Home = ({ products, bannerData }) => {
+  console.log(bannerData);
+  return (
+    <>
+      <HeroBanner bannerData={bannerData.length && bannerData[0]} />
+      <div className="products-heading">
+        <h2>Best selling</h2>
+        <p>Speakers of many variations</p>
+        <div className="products-container">
+          {products.map((product) => (
+            <Product key={product._id} product={product} />
+          ))}
+        </div>
+      </div>
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
+    </>
+  );
+};
+export const getServerSideProps = async () => {
+  const query = '*[_type=="product"]';
+  const products = await client.fetch(query);
+  const queryBanner = '*[_type=="banner"]';
+  const bannerData = await client.fetch(queryBanner);
+
+  return {
+    props: { products, bannerData },
+  };
 };
 
-export default index;
+export default Home;
