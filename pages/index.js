@@ -3,7 +3,6 @@ import { client, urlFor } from "@/libs/sanityClient";
 import { Product, FooterBanner, HeroBanner } from "../components/index";
 
 const Home = ({ products, bannerData }) => {
-  console.log(bannerData);
   return (
     <>
       <HeroBanner bannerData={bannerData.length && bannerData[0]} />

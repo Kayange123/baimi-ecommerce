@@ -1,17 +1,23 @@
 import React from "react";
 import Link from "next/link";
-import { urlFor } from '../libs/sanityClient';
+import { urlFor } from "@/libs/sanityClient";
 
 
-const HeroBanner = ({bannerData}) => {
-  return (<div className="hero-banner-container">
+const HeroBanner = ({ bannerData }) => {
+  const { smallText, image } = bannerData;
+  
+
+
+  return (
+    
+    <div className="hero-banner-container">
     <div>
       <p className="beats-solo">
-        {bannerData?.smallText}
+        {smallText}
       </p>
       <h3>{bannerData?.midText}</h3>
       <h1>{ bannerData?.largeText1 }</h1>
-      <img src={urlFor(bannerData?.image)} alt="" className="hero-banner-image" />
+      <img src={urlFor(image)} alt={smallText} className="hero-banner-image" />
       <Link href={`/product/${bannerData?.product}`}>
         <button className="button">{ bannerData?.buttonText }</button>
       </Link>
