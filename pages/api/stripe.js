@@ -10,13 +10,16 @@ export default async (req, res) => {
         mode: "payment",
         payment_method_types: ["card"],
         billing_address_collection: "auto",
-        shipping_options: [{ shipping_rate: "shr_1MeXupAojg0Mmv1MuC15Ook0" }],
+        shipping_options: [
+          { shipping_rate: "shr_1MeXupAojg0Mmv1MuC15Ook0" },
+          { shipping_rate: "shr_1Mf2rFAojg0Mmv1Mxjti719P" },
+        ],
         line_items: req.body.map((item) => {
           const img = item?.image[0].asset._ref;
           const newImage = img
             .replace(
               "image-",
-              "https://cdn.sanity.io/images/h3s6mw7p/producton"
+              "https://cdn.sanity.io/images/h3s6mw7p/producton/"
             )
             .replace("-webp", ".webp");
           return {
@@ -36,13 +39,12 @@ export default async (req, res) => {
           };
         }),
         success_url: `${req.headers.origin}/success`,
-        cancel_url: `${req.headers.origin}/cancelled`,
+        cancel_url: `${req.headers.origin}/`,
       };
 
       const session = await stripe.checkout.sessions.create(params);
       res.status(200).json(session);
     } catch (error) {
-      console.log(error);
       return res.json({ error });
     }
   } else {

@@ -1,5 +1,5 @@
 import React from "react";
-import { client, urlFor } from "@/libs/sanityClient";
+import { client } from "@/libs/sanityClient";
 import { Product, FooterBanner, HeroBanner } from "../components/index";
 
 const Home = ({ products, bannerData }) => {
@@ -7,8 +7,8 @@ const Home = ({ products, bannerData }) => {
     <>
       <HeroBanner bannerData={bannerData.length && bannerData[0]} />
       <div className="products-heading">
-        <h2>Best selling</h2>
-        <p>Speakers of many variations</p>
+        <h2>Explore Our Products Now</h2>
+        <p>Electronic Devices of many variations</p>
         <div className="products-container">
           {products.map((product) => (
             <Product key={product._id} product={product} />

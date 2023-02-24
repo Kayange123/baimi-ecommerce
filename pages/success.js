@@ -8,7 +8,6 @@ const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
 
   useEffect(() => {
-    localStorage.clear();
     setCartItems([]);
     setTotalPrice(0);
     setTotalQuantities(0);
@@ -24,7 +23,7 @@ const Success = () => {
         <h2>Thank you for your order</h2>
         <p className="email-msg">Check your email inbox for the receipt</p>
         <p className="description">
-          If you have questions, please email
+          for any inquiry, please email
           <a href="mailto:info@baimi-ecommerce.net" className="email">
             info@baimi-ecommerce.net
           </a>

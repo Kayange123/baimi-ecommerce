@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import { toast } from "react-hot-toast";
+import { getLocalStorage } from "@/libs/getStorage";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
@@ -44,19 +45,24 @@ export const StateContext = ({ children }) => {
 
   const toggleCartItemQuantity = (id, value) => {
     foundProduct = cartItems.find((item) => item._id === id);
-    index = cartItems.findIndex((i) => i._id === id);
     const updatedCart = cartItems.map((item) =>
-      item._id === id ? { ...item, quantity: item.quantity + 1 } : item
+      item._id === id
+        ? {
+            ...item,
+            quantity: value === "inc" ? item.quantity + 1 : item.quantity - 1,
+          }
+        : item
     );
     if (value === "inc") {
+      index = cartItems.findIndex((i) => i._id === id);
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
       setCartItems(updatedCart);
     } else if (value === "dec") {
       if (foundProduct.quantity > 0) {
-        setCartItems(updatedCart);
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+        setCartItems(updatedCart);
       }
     }
   };
