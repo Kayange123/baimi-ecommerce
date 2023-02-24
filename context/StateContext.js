@@ -49,9 +49,9 @@ export const StateContext = ({ children }) => {
       item._id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     if (value === "inc") {
-      setCartItems(updatedCart);
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+      setCartItems(updatedCart);
     } else if (value === "dec") {
       if (foundProduct.quantity > 0) {
         setCartItems(updatedCart);
@@ -87,6 +87,9 @@ export const StateContext = ({ children }) => {
         addToCart,
         showCart,
         setShowCart,
+        setCartItems,
+        setTotalPrice,
+        setTotalQuantities,
         toggleCartItemQuantity,
         onRemove,
       }}

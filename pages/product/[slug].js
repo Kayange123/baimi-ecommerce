@@ -72,7 +72,7 @@ const productDetails = ({ product, featuredProducts }) => {
             >
               Add to cart
             </button>
-            <button type="button" className="buy-now" onClick="">
+            <button type="button" className="buy-now" >
               Buy Now
             </button>
           </div>
@@ -82,8 +82,8 @@ const productDetails = ({ product, featuredProducts }) => {
         <h2>You may also like</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
-            {featuredProducts?.map((item) => (
-              <Product key={product?._id} product={item} />
+            {featuredProducts?.map((item, i) => (
+              <Product key={product?._id + i} product={item} />
             ))}
           </div>
         </div>
