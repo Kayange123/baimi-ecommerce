@@ -4,10 +4,11 @@ import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping, AiOutl
 import { TiDeleteOutline } from 'react-icons/ti';
 import { toast } from "react-hot-toast";
 import { useStateContext } from "@/context/StateContext";
-import { client, urlFor } from "@/libs/sanityClient";
+import { urlFor } from "@/libs/sanityClient";
 import { getStripe } from "@/libs/getStripe";
 
 const Cart = () => {
+  const {totalPrice,onRemove, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity} = useStateContext()
   const handleCheckout = async () => {
     const stripe = await getStripe();
     const response = await fetch('/api/stripe', {
@@ -16,8 +17,8 @@ const Cart = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(cartItems),
-    })
-
+    }).catch(err=> console.log(err))
+    
     if (response.statusCode === 500) return;
 
     const data = await response.json();
@@ -27,7 +28,6 @@ const Cart = () => {
   }
   
   const cartRef = useRef();
-  const {totalPrice,onRemove, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity} = useStateContext()
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
