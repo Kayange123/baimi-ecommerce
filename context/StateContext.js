@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import { toast } from "react-hot-toast";
-import { getLocalStorage } from "@/libs/getStorage";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
@@ -9,7 +8,7 @@ export const StateContext = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  let index, foundProduct;
+  let foundProduct;
 
   const incrementQty = () => {
     setQty((prevQty) => prevQty + 1);
