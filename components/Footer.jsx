@@ -3,7 +3,8 @@ import { AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter } from 'react-icon
 
 
 const Footer = () => {
-  return (<div className="footer-container">
+  return (
+  <div className="footer-container">
     <p>&copy; {new Date().getFullYear()} BaiMi Store </p> 
     <p>All rights reserved!</p>
     <p className="icons">
@@ -17,7 +18,9 @@ const Footer = () => {
       <AiFillFacebook />
       </a>
     </p>
-  </div>);
+    <p>created by <a href="https://tinyurl.com/5cuupvkj" target="_blank">KayangeInc</a></p>
+    </div>
+  );
 };
 
 export default Footer;
