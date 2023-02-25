@@ -7,13 +7,13 @@ const Footer = () => {
     <p>&copy; {new Date().getFullYear()} BaiMi Store </p> 
     <p>All rights reserved!</p>
     <p className="icons">
-      <a href="" target="_blank" className="social-media">  
+      <a href="https://tinyurl.com/5cuupvkj" target="_blank" className="social-media">  
       <AiOutlineInstagram />
       </a>
-      <a className="social-media">
+      <a href="https://tinyurl.com/5cuupvkj" target="_blank" className="social-media">
       <AiOutlineTwitter />
       </a>
-      <a className="social-media">
+      <a href="https://tinyurl.com/5cuupvkj" target="_blank" className="social-media">
       <AiFillFacebook />
       </a>
     </p>
