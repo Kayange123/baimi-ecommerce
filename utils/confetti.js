@@ -1,7 +1,7 @@
 import confetti from "canvas-confetti";
 
 export const getFireWorks = () => {
-  var duration = 6 * 1000;
+  var duration = 8 * 1000;
   var animationEnd = Date.now() + duration;
   var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 

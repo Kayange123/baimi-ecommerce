@@ -8,10 +8,10 @@ const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
 
   useEffect(() => {
+    getFireWorks();
     setCartItems([]);
     setTotalPrice(0);
     setTotalQuantities(0);
-    getFireWorks();
   }, []);
 
   return (

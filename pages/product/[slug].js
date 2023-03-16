@@ -83,6 +83,9 @@ const productDetails = ({ product, featuredProducts }) => {
           </div>
         </div>
       </div>
+      {/* Commenting to products to be displayed here! */}
+      <div></div>
+      {/* End of comments section */}
       <div className="maylike-products-wrapper">
         <h2>You may also like</h2>
         <div className="marquee">

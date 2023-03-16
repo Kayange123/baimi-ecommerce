@@ -1,12 +1,12 @@
 import React, {useRef} from "react";
 import Link from "next/link";
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShoppingCart } from 'react-icons/ai'
 import { TiDeleteOutline } from 'react-icons/ti';
 import { toast } from "react-hot-toast";
 import { useStateContext } from "@/context/StateContext";
 import { urlFor } from "@/libs/sanityClient";
 import { getStripe } from "@/libs/getStripe";
-
+ 
 const Cart = () => {
   const {totalPrice,onRemove, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity} = useStateContext()
   const handleCheckout = async () => {
@@ -20,10 +20,10 @@ const Cart = () => {
     }).catch(err=> console.log(err))
     
     if (response.statusCode === 500) return;
+    toast.loading('Redirecting...');
 
     const data = await response.json();
     
-    toast.loading('Redirecting...');
     stripe.redirectToCheckout({ sessionId: data.id });
   }
   

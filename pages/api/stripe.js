@@ -1,10 +1,11 @@
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.NEXT_STRIPE_SECRET_KEY);
+
 export default async (req, res) => {
   if (req.method === "POST") {
+
     try {
-      console.log(req.header);
       const params = {
         submit_type: "pay",
         mode: "payment",
@@ -19,7 +20,7 @@ export default async (req, res) => {
           const newImage = img
             .replace(
               "image-",
-              "https://cdn.sanity.io/images/h3s6mw7p/producton/"
+              "https://cdn.sanity.io/images/h3s6mw7p/production/"
             )
             .replace("-webp", ".webp");
           return {
